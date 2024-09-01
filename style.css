@@ -1,0 +1,191 @@
+* {
+  /* margin: 0;
+  padding: 0; */
+  /* border: 1px solid red; */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+@font-face {
+  font-family: "DMSerif";
+  src: url(./assets/fonts/DMSerifDisplay-Regular.ttf);
+}
+
+body {
+  font-family: "DMSerif", verdana;
+  background: url(./assets/img/sea.jpg) center/cover;
+  /* vh  = viewport height = %  */
+  min-height: 100vh;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  /* les tailles de police doivent être en rem (1 rem=16px) ou pour etre responsive en vw*/
+  /* font-size: 2.5rem; */
+  font-size: 8vw;
+  text-shadow: 5px 2px 0 #ec95f44a;
+  color: rgb(195, 19, 223);
+  font-family: "Oswald", sans-serif;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+main {
+  min-height: 500px;
+  width: 90%;
+  background: #818ad94a;
+  /* centrer une boite  */
+  margin: 0 auto;
+  /* 0 (haut/bas) auto (right/left)  */
+  border: 2px solid rgb(175, 93, 202);
+  border-radius: 20px;
+  box-shadow: 6px 4px 16px 5px rgba(69, 30, 209, 0.642);
+  padding: 15px;
+}
+
+h2 {
+  margin: 0;
+  color: white;
+}
+
+/* FLEXBOX */
+/* sert à répartir équitablement des éléments sur la page  */
+
+.flexbox,
+.grid,
+.absolute {
+  color: rgba(14, 50, 62, 0.923);
+  border: 2px solid rgba(90, 90, 232, 0.927);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  min-height: 150px;
+}
+
+.flexbox ul {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexbox li {
+  list-style: none;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  background-color: rgba(41, 218, 185, 0.217);
+  /* centrer un  unique élément vertic et horiz  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border-color: cyan;
+  border-style: solid;
+}
+/* GRID  */
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.grid img {
+  width: 90%;
+  height: 200px;
+  margin-top: 33px auto;
+  display: block;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "i1 i2"
+    "ta ta"
+    "vi bt";
+}
+
+input,
+textarea {
+  margin: 5px;
+  border: 2px solid darkblue;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-family: "DMSerif";
+  border-radius: 5px;
+}
+
+textarea {
+  grid-area: ta;
+  height: 40px;
+  resize: none;
+}
+
+#btn-submit {
+  grid-area: bt;
+  cursor: pointer;
+  background: rgba(0, 255, 255, 0.781);
+  transition: 0.2s;
+}
+
+#btn-submit:hover {
+  background: rgba(215, 215, 107, 0.65);
+}
+
+/* ABSOLUTE */
+/* Il faut mettre une position relative au parent sinon l'élément se place par rapport au body  */
+.absolute {
+  position: relative;
+}
+
+#circle1 {
+  height: 80px;
+  width: 80px;
+  background: #35ccc696;
+  position: absolute;
+  border-radius: 150%;
+  top: 0;
+  right: 0;
+}
+/* disposer où on veut par rapport au parent  */
+#circle2 {
+  height: 40px;
+  width: 40px;
+  border-radius: 150px;
+  background: blue;
+  position: absolute;
+  right: 0%;
+  top: 11.5%;
+  transform: translateX(-50%);
+}
+
+/* RESPONSIVE  */
+
+@media screen and (max-width: 900px) {
+  .grid-container {
+    display: block;
+  }
+  .grid-container img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 610px) {
+  .fexbox ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  form {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "i1"
+      "i2"
+      "ta"
+      "bt";
+  }
+}
+input,
+textarea {
+  font-size: 0.8rem;
+}
